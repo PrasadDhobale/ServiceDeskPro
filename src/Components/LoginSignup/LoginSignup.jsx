@@ -16,7 +16,8 @@ const LoginSignup = () => {
     organization: "",
     clientEmail: "",
     clientPassword: "",
-    location: ""
+    location: "",
+    userType: "client" // Default to admin login
   });
 
   const handleInputChange = (e) => {
@@ -24,10 +25,15 @@ const LoginSignup = () => {
     setFormData({ ...formData, [name]: value });
   };
 
+  const handleRadioChange = (e) => {
+    const { value } = e.target;
+    setFormData({ ...formData, userType: value });
+  };
+
   const handleLoginSubmit = (e) => {
     e.preventDefault();
-    // Add your login logic here, using formData.email and formData.password
-    console.log("Login form submitted:", formData.email, formData.password);
+    // Add your login logic here, using formData.email, formData.password, and formData.userType
+    console.log("Login form submitted:", formData.email, formData.password, formData.userType);
   };
 
   const handleSignupSubmit = (e) => {
@@ -74,6 +80,28 @@ const LoginSignup = () => {
                 onChange={handleInputChange}
               />
             </div>
+          </div>
+          <div className="radio-buttons">
+            <label>
+              <input 
+                type="radio" 
+                name="userType" 
+                value="client" 
+                checked={formData.userType === "client"}
+                onChange={handleRadioChange} 
+              />
+               Client
+            </label>
+            <label>
+              <input 
+                type="radio" 
+                name="userType" 
+                value="admin" 
+                checked={formData.userType === "admin"}
+                onChange={handleRadioChange} 
+              />
+               Admin
+            </label>            
           </div>
           <div className="forgot-password">Forgot Password? <span>Click Here!</span></div>
           <div className="submit-container">

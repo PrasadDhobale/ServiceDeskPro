@@ -1,3 +1,9 @@
+.logo {
+    width: 100px; /* Adjust the width as needed */
+    margin: 0 auto;
+    border-radius: 50%;
+}
+
 .container {
     display: flex;
     flex-direction: column;
@@ -101,4 +107,14 @@
 .text-center{
     margin-left: auto;
     margin-right: auto;
+}
+.radio-buttons {
+    font-size: 20px;
+    font-family: Arial, Helvetica, sans-serif;
+    display: block;
+    margin: 20px;
+    text-align: center;
+}
+.radio-buttons label{
+    margin-right: 20px;
 }
