@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.css": "/react-gh-pages/static/css/main.8e6473d0.css",
-    "main.js": "/react-gh-pages/static/js/main.d91fac32.js",
-    "static/js/453.23ff429a.chunk.js": "/react-gh-pages/static/js/453.23ff429a.chunk.js",
-    "static/media/logo.png": "/react-gh-pages/static/media/logo.7326e7f74ecbc2ba9cea.png",
-    "index.html": "/react-gh-pages/index.html",
-    "main.8e6473d0.css.map": "/react-gh-pages/static/css/main.8e6473d0.css.map",
-    "main.d91fac32.js.map": "/react-gh-pages/static/js/main.d91fac32.js.map",
-    "453.23ff429a.chunk.js.map": "/react-gh-pages/static/js/453.23ff429a.chunk.js.map"
+    "main.css": "/ServiceDeskPro/static/css/main.8e6473d0.css",
+    "main.js": "/ServiceDeskPro/static/js/main.6d54508c.js",
+    "static/js/453.23ff429a.chunk.js": "/ServiceDeskPro/static/js/453.23ff429a.chunk.js",
+    "static/media/logo.png": "/ServiceDeskPro/static/media/logo.7326e7f74ecbc2ba9cea.png",
+    "index.html": "/ServiceDeskPro/index.html",
+    "main.8e6473d0.css.map": "/ServiceDeskPro/static/css/main.8e6473d0.css.map",
+    "main.6d54508c.js.map": "/ServiceDeskPro/static/js/main.6d54508c.js.map",
+    "453.23ff429a.chunk.js.map": "/ServiceDeskPro/static/js/453.23ff429a.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.8e6473d0.css",
-    "static/js/main.d91fac32.js"
+    "static/js/main.6d54508c.js"
   ]
 }
