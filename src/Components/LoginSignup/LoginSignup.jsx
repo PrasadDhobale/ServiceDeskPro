@@ -17,13 +17,12 @@ const LoginSignup = () => {
     clientEmail: "",
     clientPassword: "",
     location: "",
-    userType: "client" // Default to admin login
+    userType: "client", // Default to client login
+    mobile: ""
   });
-
-  const handleInputChange = (e) => {
-    const { name, value } = e.target;
-    setFormData({ ...formData, [name]: value });
-  };
+  const [errors, setErrors] = useState({});
+  const [showForgotPassword, setShowForgotPassword] = useState(false);
+  const [forgotPasswordEmail, setForgotPasswordEmail] = useState("");
 
   const handleRadioChange = (e) => {
     const { value } = e.target;
@@ -32,14 +31,79 @@ const LoginSignup = () => {
 
   const handleLoginSubmit = (e) => {
     e.preventDefault();
-    // Add your login logic here, using formData.email, formData.password, and formData.userType
     console.log("Login form submitted:", formData.email, formData.password, formData.userType);
+    // Add your login logic here
+  };
+
+  const handleSendPassword = () => {
+    // Add logic to send password to the email entered in forgot password popup
+    console.log("Sending password to:", forgotPasswordEmail);
+    // Reset the email and close the popup
+    setForgotPasswordEmail("");
+    setShowForgotPassword(false);
+  };
+
+  const handleForgotPasswordClick = () => {
+    setShowForgotPassword(true);
+  };
+
+  const handleForgotPasswordClose = () => {
+    setShowForgotPassword(false);
   };
 
   const handleSignupSubmit = (e) => {
-    e.preventDefault();
-    // Add your signup logic here, using formData.name, formData.clientEmail, etc.
+    e.preventDefault();    
+
+    // Proceed with signup logic
     console.log("Signup form submitted:", formData);
+    // Add your signup logic here
+  };
+
+  const handleLoginInputChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
+  };
+
+  const handleSignupInputChange = (e) => {
+    const { name, value } = e.target;
+    let errorsCopy = { ...errors }; // Make a copy of the errors state
+
+    // Validation
+    const nameRegex = /^[a-zA-Z]+(?: [a-zA-Z]+)*$/;
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    const mobileRegex = /^\d{0,10}$/;
+
+    switch (name) {
+      case "name":
+        if (!value.match(nameRegex)) {
+          errorsCopy.name = "Name should contain only alphabets";
+        } else {
+          delete errorsCopy.name;
+        }
+        break;
+      case "clientEmail":
+        if (!value.match(emailRegex)) {
+          errorsCopy.clientEmail = "Invalid email address";
+        } else {
+          delete errorsCopy.clientEmail;
+        }
+        break;
+      case "mobile":
+        if (!value.match(mobileRegex)) {
+          errorsCopy.mobile = "Mobile number should be up to 10 digits";
+        } else {
+          delete errorsCopy.mobile;
+        }
+        break;
+      default:
+        break;
+    }
+
+    // Update the errors state
+    setErrors(errorsCopy);
+
+    // Update the form data state
+    setFormData({ ...formData, [name]: value });
   };
 
   const toggleAction = () => {
@@ -66,7 +130,7 @@ const LoginSignup = () => {
                 placeholder="Email Id"
                 name="email"
                 value={formData.email}
-                onChange={handleInputChange}
+                onChange={handleLoginInputChange}
               />
             </div>
 
@@ -77,7 +141,7 @@ const LoginSignup = () => {
                 placeholder="Password"
                 name="password"
                 value={formData.password}
-                onChange={handleInputChange}
+                onChange={handleLoginInputChange}
               />
             </div>
           </div>
@@ -103,7 +167,7 @@ const LoginSignup = () => {
                Admin
             </label>            
           </div>
-          <div className="forgot-password">Forgot Password? <span>Click Here!</span></div>
+          <div className="forgot-password" onClick={handleForgotPasswordClick}>Forgot Password? <span>Click Here!</span></div>
           <div className="submit-container">
             <button type="submit" className="submit text-center">Login</button>
           </div>
@@ -118,8 +182,9 @@ const LoginSignup = () => {
                 placeholder="Client Name"
                 name="name"
                 value={formData.name}
-                onChange={handleInputChange}
+                onChange={handleSignupInputChange}
               />
+              {errors.name && <span className="error">{errors.name}</span>}
             </div>
 
             <div className="input">
@@ -129,7 +194,7 @@ const LoginSignup = () => {
                 placeholder="Client Organization"
                 name="organization"
                 value={formData.organization}
-                onChange={handleInputChange}
+                onChange={handleSignupInputChange}
               />
             </div>
 
@@ -140,8 +205,9 @@ const LoginSignup = () => {
                 placeholder="Client Email"
                 name="clientEmail"
                 value={formData.clientEmail}
-                onChange={handleInputChange}
+                onChange={handleSignupInputChange}
               />
+              {errors.clientEmail && <span className="error">{errors.clientEmail}</span>}
             </div>
 
             <div className="input">
@@ -151,7 +217,7 @@ const LoginSignup = () => {
                 placeholder="Client Password"
                 name="clientPassword"
                 value={formData.clientPassword}
-                onChange={handleInputChange}
+                onChange={handleSignupInputChange}
               />
             </div>
 
@@ -162,8 +228,20 @@ const LoginSignup = () => {
                 placeholder="Client Location"
                 name="location"
                 value={formData.location}
-                onChange={handleInputChange}
+                onChange={handleSignupInputChange}
               />
+            </div>
+
+            <div className="input">
+              <span className='inputIcon' style={{ color: 'grey' }}><FaLocationDot /></span>
+              <input
+                type="text"
+                placeholder="Mobile Number"
+                name="mobile"
+                value={formData.mobile}
+                onChange={handleSignupInputChange}
+              />
+              {errors.mobile && <span className="error">{errors.mobile}</span>}
             </div>
           </div>
           <div className="forgot-password">Already have an Account? <span onClick={toggleAction}>Login here!</span></div>
@@ -171,7 +249,24 @@ const LoginSignup = () => {
             <button type="submit" className="submit text-center">Signup</button>
           </div>
         </form>
-      )}      
+      )}
+      {showForgotPassword && (
+        <div className="popup">
+          <div className="popup-content">
+            <span className="closefp" onClick={handleForgotPasswordClose}>Close &times;</span>
+            <h2>Forgot Password?</h2>
+            <div className="inputs">
+              <input
+                type="email"
+                placeholder="Enter your email"
+                value={forgotPasswordEmail}
+                onChange={(e) => setForgotPasswordEmail(e.target.value)}
+              />
+              <button className='submit' onClick={handleSendPassword}>Send Password</button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
