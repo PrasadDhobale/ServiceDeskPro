@@ -255,14 +255,16 @@ const LoginSignup = () => {
           <div className="popup-content">
             <span className="closefp" onClick={handleForgotPasswordClose}>Close &times;</span>
             <h2>Forgot Password?</h2>
-            <div className="inputs">
-              <input
-                type="email"
-                placeholder="Enter your email"
-                value={forgotPasswordEmail}
-                onChange={(e) => setForgotPasswordEmail(e.target.value)}
-              />
-              <button className='submit' onClick={handleSendPassword}>Send Password</button>
+            <div className="login-form">
+              <div className="inputs">
+                <input
+                  type="email"
+                  placeholder="Enter your email"
+                  value={forgotPasswordEmail}
+                  onChange={(e) => setForgotPasswordEmail(e.target.value)}
+                />
+                <button className='submit' onClick={handleSendPassword}>Send Password</button>
+              </div>
             </div>
           </div>
         </div>
