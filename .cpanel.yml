@@ -1,5 +1,0 @@
----
-deployment:
-  tasks:
-    - export DEPLOYPATH=/home/j6dmrmt54jzf/public_html/helpdesk
-    - /bin/cp * $DEPLOYPATH
