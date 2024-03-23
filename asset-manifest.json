@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.css": "/ServiceDeskPro/static/css/main.f8966b16.css",
-    "main.js": "/ServiceDeskPro/static/js/main.cc052578.js",
-    "static/js/453.23ff429a.chunk.js": "/ServiceDeskPro/static/js/453.23ff429a.chunk.js",
-    "static/media/logo.png": "/ServiceDeskPro/static/media/logo.7326e7f74ecbc2ba9cea.png",
-    "index.html": "/ServiceDeskPro/index.html",
-    "main.f8966b16.css.map": "/ServiceDeskPro/static/css/main.f8966b16.css.map",
-    "main.cc052578.js.map": "/ServiceDeskPro/static/js/main.cc052578.js.map",
-    "453.23ff429a.chunk.js.map": "/ServiceDeskPro/static/js/453.23ff429a.chunk.js.map"
+    "main.css": "/static/css/main.f8966b16.css",
+    "main.js": "/static/js/main.8c0cb5da.js",
+    "static/js/453.23ff429a.chunk.js": "/static/js/453.23ff429a.chunk.js",
+    "static/media/logo.png": "/static/media/logo.7326e7f74ecbc2ba9cea.png",
+    "index.html": "/index.html",
+    "main.f8966b16.css.map": "/static/css/main.f8966b16.css.map",
+    "main.8c0cb5da.js.map": "/static/js/main.8c0cb5da.js.map",
+    "453.23ff429a.chunk.js.map": "/static/js/453.23ff429a.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.f8966b16.css",
-    "static/js/main.cc052578.js"
+    "static/js/main.8c0cb5da.js"
   ]
 }
